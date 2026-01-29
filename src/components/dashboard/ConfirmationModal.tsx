@@ -41,13 +41,6 @@ export const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
         label: cancelText,
         onClick: onCancel,
       }}
-      overrides={{
-        Dialog: {
-          style: {
-            borderRadius: '12px',
-          },
-        },
-      }}
     >
       <Block display="flex" gridGap="scale600" alignItems="flex-start">
         <AlertCircle
@@ -58,7 +51,6 @@ export const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
         <ParagraphMedium
           marginTop={0}
           marginBottom={0}
-          $style={{ lineHeight: '1.5' }}
         >
           {message}
         </ParagraphMedium>

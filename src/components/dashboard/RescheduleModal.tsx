@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Block } from 'baseui/block';
 import { DatePicker } from 'baseui/datepicker';
 import { Textarea } from 'baseui/textarea';
-import { LabelMedium, ParagraphMedium } from 'baseui/typography';
+import { LabelMedium } from 'baseui/typography';
 import { useStyletron } from 'baseui';
 import { Calendar, FileText } from 'lucide-react';
 import { FTModal, semantic } from '../../design-system';
@@ -57,23 +57,8 @@ export const RescheduleModal: React.FC<RescheduleModalProps> = ({
         label: 'Cancel',
         onClick: onClose,
       }}
-      overrides={{
-        Dialog: {
-          style: {
-            borderRadius: '12px',
-          },
-        },
-      }}
     >
       <Block display="flex" flexDirection="column" gridGap="scale700">
-        {/* Client Info */}
-        <ParagraphMedium marginTop={0} marginBottom={0} color="contentSecondary">
-          Rescheduling session for{' '}
-          <strong className={css({ color: theme.colors.contentPrimary, fontWeight: 600 })}>
-            {clientName}
-          </strong>
-        </ParagraphMedium>
-
         {/* Date Field */}
         <Block>
           <Block
@@ -82,9 +67,9 @@ export const RescheduleModal: React.FC<RescheduleModalProps> = ({
             gridGap="scale200"
             marginBottom="scale300"
           >
-            <Calendar size={18} strokeWidth={2} />
+            <Calendar size={18} color={semantic.text} strokeWidth={2} />
             <LabelMedium marginTop={0} marginBottom={0}>
-              New Date *
+              New Date
             </LabelMedium>
           </Block>
           <DatePicker
@@ -102,7 +87,7 @@ export const RescheduleModal: React.FC<RescheduleModalProps> = ({
             gridGap="scale200"
             marginBottom="scale300"
           >
-            <FileText size={18} strokeWidth={2} />
+            <FileText size={18} color={semantic.text} strokeWidth={2} />
             <LabelMedium marginTop={0} marginBottom={0}>
               Reason (Optional)
             </LabelMedium>

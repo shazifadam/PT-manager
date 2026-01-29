@@ -7,7 +7,7 @@ import { StatefulMenu } from 'baseui/menu';
 import { useStyletron } from 'baseui';
 import { Settings, LogOut, User } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
-import { FTPage, FTSection, semantic, fontFamily, fontSize, fontWeight } from '../../design-system';
+import { FTPage, FTSection, semantic, fontFamily, fontSize, fontWeight, gray, gradient } from '../../design-system';
 import { SessionCard } from '../../components/dashboard/SessionCard';
 import { RescheduleModal } from '../../components/dashboard/RescheduleModal';
 import { ConfirmationModal } from '../../components/dashboard/ConfirmationModal';
@@ -155,11 +155,11 @@ export const DashboardPage: React.FC = () => {
   };
 
   return (
-    <Block minHeight="100vh" backgroundColor="#f5f5f5">
+    <Block minHeight="100vh" backgroundColor={semantic.bg}>
       {/* Gradient Header with Profile Icon */}
       <Block
         $style={{
-          background: 'linear-gradient(180deg, #fad0c4 0%, #ffd1a9 30%, #ffecd2 60%, #f5f5f5 100%)',
+          background: `linear-gradient(180deg, ${gradient.start} 0%, ${gradient.mid1} 30%, ${gradient.mid2} 60%, ${gradient.end} 100%)`,
           paddingTop: '32px',
           paddingBottom: '32px',
           position: 'relative',
@@ -204,10 +204,10 @@ export const DashboardPage: React.FC = () => {
                   width: '44px',
                   height: '44px',
                   borderRadius: '50%',
-                  border: '2px solid rgba(255, 255, 255, 0.9)',
+                  border: `2px solid ${theme.colors.mono100}`,
                   overflow: 'hidden',
                   cursor: 'pointer',
-                  backgroundColor: '#ffffff',
+                  backgroundColor: theme.colors.backgroundSecondary,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -226,7 +226,7 @@ export const DashboardPage: React.FC = () => {
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />
                 ) : (
-                  <User size={24} color="#171619" strokeWidth={2} />
+                  <User size={24} color={gray[900]} strokeWidth={2} />
                 )}
               </Block>
             </StatefulPopover>
@@ -273,7 +273,7 @@ export const DashboardPage: React.FC = () => {
         {/* Stats Card */}
         <Block marginBottom="scale800">
           <Block
-            backgroundColor="#171619"
+            backgroundColor={gray[900]}
             padding="scale700"
             $style={{
               borderRadius: '16px',
@@ -285,7 +285,7 @@ export const DashboardPage: React.FC = () => {
               fontSize: '48px',
               fontWeight: fontWeight.normal,
               lineHeight: '1',
-              color: '#ffffff',
+              color: theme.colors.mono100,
               marginBottom: '8px',
               letterSpacing: '-0.02em',
             })}>
@@ -304,8 +304,8 @@ export const DashboardPage: React.FC = () => {
           </Block>
         </Block>
 
-        {/* Today's Sessions */}
-        <FTSection title="Today's Sessions">
+       {/* Today's Sessions */}
+        <Block>
           {/* Pending Sessions Grouped by Time */}
           {pendingSessionsByTime.length > 0 && (
             <Block marginBottom={completedSessionsByTime.length > 0 ? 'scale1000' : 0}>
@@ -394,11 +394,11 @@ export const DashboardPage: React.FC = () => {
           {/* Empty State */}
           {sessions.length === 0 && (
             <Block
-              backgroundColor="#ffffff"
+              backgroundColor={theme.colors.backgroundSecondary}
               padding="scale1000"
               $style={{
                 borderRadius: '12px',
-                border: '1px solid #e0e0e0',
+                border: `1px solid ${theme.colors.borderOpaque}`,
               }}
             >
               <ParagraphMedium
@@ -411,7 +411,7 @@ export const DashboardPage: React.FC = () => {
               </ParagraphMedium>
             </Block>
           )}
-        </FTSection>
+        </Block>
       </Block>
 
       {/* Modals */}

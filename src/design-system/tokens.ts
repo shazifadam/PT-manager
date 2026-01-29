@@ -29,6 +29,14 @@ export const gray = {
   white: '#ffffff',
 } as const;
 
+// Gradient Colors (for header)
+export const gradient = {
+  start: '#fad0c4',
+  mid1: '#ffd1a9',
+  mid2: '#ffecd2',
+  end: '#f5f5f5',
+} as const;
+
 // Program/Tag Colors
 export const programColors = {
   strength: '#E3F2FD',      // Light blue
