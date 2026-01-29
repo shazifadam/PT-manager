@@ -1,0 +1,9 @@
+# Type: feat|fix|docs|style|refactor|test|chore
+# Format: <type>(<scope>): <subject>
+#
+# Example: feat(auth): add Google OAuth login
+# Example: fix(clients): resolve duplicate phone validation
+#
+# Body: Explain what and why (not how)
+#
+# Footer: Breaking changes, issue references
