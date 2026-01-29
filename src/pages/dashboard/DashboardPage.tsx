@@ -3,6 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from 'baseui/button';
 import { useStyletron } from 'baseui';
 import { useAuth } from '../../contexts/AuthContext';
+import Container from '../../components/common/Container';
+import Card from '../../components/common/Card';
+import PageHeader from '../../components/common/PageHeader';
+import Section from '../../components/common/Section';
+import { colors, spacing, fontSize, layout } from '../../config/designSystem';
 
 const DashboardPage: React.FC = () => {
   const [css] = useStyletron();
@@ -21,131 +26,133 @@ const DashboardPage: React.FC = () => {
   return (
     <div className={css({
       minHeight: '100vh',
-      backgroundColor: '#f2e9e2',
-      padding: '20px',
+      backgroundColor: colors.background.primary,
+      paddingTop: spacing.xl,
+      paddingBottom: spacing.xl,
     })}>
-      <div className={css({
-        maxWidth: '1200px',
-        margin: '0 auto',
-      })}>
-        {/* Header */}
-        <div className={css({
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginBottom: '32px',
-          backgroundColor: '#ffffff',
-          padding: '20px',
-          borderRadius: '12px',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-        })}>
-          <div className={css({ display: 'flex', alignItems: 'center', gap: '16px' })}>
-            {currentUser?.photoURL && (
-              <img
-                src={currentUser.photoURL}
-                alt="Profile"
-                className={css({
-                  width: '48px',
-                  height: '48px',
-                  borderRadius: '50%',
-                  border: '2px solid #e6434c',
-                })}
-              />
-            )}
-            <div>
-              <h1 className={css({
-                fontFamily: 'Ubuntu, sans-serif',
-                fontSize: '24px',
-                fontWeight: '400',
-                color: '#171619',
-                margin: '0',
+      <Container>
+        {/* User Profile Header */}
+        <Section>
+          <Card>
+            <div className={css({
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            })}>
+              <div className={css({ 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: spacing.base 
               })}>
-                Hello, {currentUser?.displayName}
-              </h1>
-              <p className={css({
-                fontFamily: 'Inter, sans-serif',
-                fontSize: '14px',
-                color: '#847369',
-                margin: '4px 0 0 0',
-              })}>
-                {currentUser?.email}
-              </p>
-            </div>
-          </div>
-          <Button
-            onClick={handleSignOut}
-            kind="secondary"
-            overrides={{
-              BaseButton: {
-                style: {
-                  backgroundColor: '#ffffff',
-                  color: '#e6434c',
-                  border: '1px solid #e6434c',
-                  ':hover': {
-                    backgroundColor: '#fee',
+                {currentUser?.photoURL && (
+                  <img
+                    src={currentUser.photoURL}
+                    alt="Profile"
+                    className={css({
+                      width: '48px',
+                      height: '48px',
+                      borderRadius: '50%',
+                      border: `2px solid ${colors.brand.coralRed}`,
+                    })}
+                  />
+                )}
+                <div>
+                  <h1 className={css({
+                    fontFamily: 'Ubuntu, sans-serif',
+                    fontSize: fontSize.xl,
+                    fontWeight: '400',
+                    color: colors.gray[900],
+                    margin: '0',
+                  })}>
+                    Hello, {currentUser?.displayName}
+                  </h1>
+                  <p className={css({
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: fontSize.sm,
+                    color: colors.gray[500],
+                    margin: `${spacing.xs} 0 0 0`,
+                  })}>
+                    {currentUser?.email}
+                  </p>
+                </div>
+              </div>
+              <Button
+                onClick={handleSignOut}
+                kind="secondary"
+                size="compact"
+                overrides={{
+                  BaseButton: {
+                    style: {
+                      backgroundColor: colors.background.surface,
+                      color: colors.brand.coralRed,
+                      border: `1px solid ${colors.brand.coralRed}`,
+                      ':hover': {
+                        backgroundColor: '#fee',
+                      },
+                    },
                   },
-                },
-              },
-            }}
-          >
-            Sign Out
-          </Button>
-        </div>
+                }}
+              >
+                Sign Out
+              </Button>
+            </div>
+          </Card>
+        </Section>
 
         {/* Welcome Content */}
-        <div className={css({
-          backgroundColor: '#ffffff',
-          padding: '40px',
-          borderRadius: '12px',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-          textAlign: 'center',
-        })}>
-          <h2 className={css({
-            fontFamily: 'Ubuntu, sans-serif',
-            fontSize: '32px',
-            fontWeight: '400',
-            color: '#3a061a',
-            marginBottom: '16px',
-          })}>
-            🎉 Authentication Complete!
-          </h2>
-          <p className={css({
-            fontFamily: 'Inter, sans-serif',
-            fontSize: '16px',
-            color: '#847369',
-            marginBottom: '24px',
-          })}>
-            Your authentication module is now working. Next steps:
-          </p>
-          <ul className={css({
-            listStyle: 'none',
-            padding: 0,
-            textAlign: 'left',
-            maxWidth: '600px',
-            margin: '0 auto',
-          })}>
-            {[
-              'Dashboard with Today\'s Sessions',
-              'Client Management System',
-              'Attendance Tracking',
-              'Payment Recording',
-              'Progress Analytics',
-            ].map((feature, index) => (
-              <li key={index} className={css({
-                fontFamily: 'Inter, sans-sif',
-                fontSize: '14px',
-                color: '#171619',
-                padding: '12px 16px',
-                backgroundColor: '#f2e9e2',
-                marginBottom: '8px',
-                borderRadius: '8px',
+        <Section>
+          <Card padding="lg">
+            <div className={css({ textAlign: 'center' })}>
+              <h2 className={css({
+                fontFamily: 'Ubuntu, sans-serif',
+                fontSize: fontSize['4xl'],
+                fontWeight: '400',
+                color: colors.brand.burgundy,
+                marginBottom: spacing.base,
               })}>
-                ✓ {feature}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+                🎉 Authentication Complete!
+              </h2>
+              <p className={css({
+                fontFamily: 'Inter, sans-serif',
+                fontSize: fontSize.base,
+                color: colors.gray[500],
+                marginBottom: spacing.xl,
+              })}>
+              Your authentication module is now working. Next steps:
+              </p>
+              <ul className={css({
+                listStyle: 'none',
+                padding: 0,
+                textAlign: 'left',
+                maxWidth: '600px',
+                margin: '0 auto',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: spacing.sm,
+              })}>
+                {[
+                  'Dashboard with Today\'s Sessions',
+                  'Client Management System',
+                  'Attendance Tracking',
+                  'Payment Recording',
+                  'Progress Analytics',
+                ].map((feature, index) => (
+                  <li key={index} className={css({
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: fontSize.sm,
+                    color: colors.gray[900],
+                    padding: spacing.md,
+                    backgroundColor: colors.background.primary,
+                    borderRadius: '8px',
+                  })}>
+                    ✓ {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Card>
+        </Section>
+      </Container>
     </div>
   );
 };
