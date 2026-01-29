@@ -11,6 +11,7 @@
     "baseui": "^16.0.0",
     "date-fns": "^2.30.0",
     "firebase": "^12.8.0",
+    "lucide-react": "^0.563.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-native": "^0.83.1",

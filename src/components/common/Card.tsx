@@ -7,13 +7,15 @@ interface CardProps {
   padding?: 'sm' | 'base' | 'lg' | 'none';
   shadow?: 'none' | 'sm' | 'base' | 'md' | 'lg';
   onClick?: () => void;
+  noBorder?: boolean;
 }
 
 const Card: React.FC<CardProps> = ({ 
   children, 
   padding = 'base',
-  shadow = 'md',
+  shadow = 'base',
   onClick,
+  noBorder = false,
 }) => {
   const [css] = useStyletron();
   
@@ -25,11 +27,13 @@ const Card: React.FC<CardProps> = ({
         backgroundColor: colors.background.surface,
         borderRadius: borderRadius.md,
         boxShadow: shadows[shadow],
+        border: noBorder ? 'none' : `0.5px solid ${colors.gray[200]}`,
         padding: paddingValue,
         cursor: onClick ? 'pointer' : 'default',
-        transition: 'box-shadow 0.2s ease',
+        transition: 'all 0.2s ease',
         ':hover': onClick ? {
-          boxShadow: shadows.lg,
+          boxShadow: shadows.md,
+          transform: 'translateY(-1px)',
         } : {},
       })}
       onClick={onClick}

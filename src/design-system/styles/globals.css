@@ -1,0 +1,103 @@
+/**
+ * FitTrack Pro Global Styles
+ * Base UI Compatible - Following Uber design system standards
+ * Light gray background, gradient in page header
+ * Figtree for headings, Inter for body
+ */
+
+/* Import Figtree and Inter fonts */
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+/* Reset & Base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  font-weight: 400;
+  background-color: #f5f5f5;
+  color: #171619;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* Headings - Figtree 400 */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Figtree', -apple-system, system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+/* Remove default button styles */
+button {
+  font-family: inherit;
+  font-weight: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* Remove default input styles */
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+/* Base UI Focus Ring Override */
+:focus-visible {
+  outline: 2px solid #e6434c;
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Scrollbar (Base UI Style) */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d0d0d0;
+  border-radius: 6px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b0b0b0;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Selection */
+::selection {
+  background: rgba(230, 67, 76, 0.2);
+  color: inherit;
+}
+
+/* Base UI Component Overrides */
+[data-baseweb] {
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+}
