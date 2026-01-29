@@ -97,12 +97,13 @@ const LoginPage: React.FC = () => {
                 style: {
                   width: '100%',
                   height: '48px',
-                  backgroundColor: colors.brand.coralRed,
+                  borderRadius: borderRadius.full,
+                  backgroundColor: colors.brand.burgundy,
                   ':hover': {
                     backgroundColor: colors.brand.pink,
                   },
                   ':active': {
-                    backgroundColor: colors.brand.burgundy,
+                    backgroundColor: colors.brand.coralRed,
                   },
                 },
               },

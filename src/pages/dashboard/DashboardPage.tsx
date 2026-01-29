@@ -5,9 +5,8 @@ import { useStyletron } from 'baseui';
 import { useAuth } from '../../contexts/AuthContext';
 import Container from '../../components/common/Container';
 import Card from '../../components/common/Card';
-import PageHeader from '../../components/common/PageHeader';
 import Section from '../../components/common/Section';
-import { colors, spacing, fontSize, layout } from '../../config/designSystem';
+import { colors, spacing, fontSize, borderRadius } from '../../config/designSystem';
 
 const DashboardPage: React.FC = () => {
   const [css] = useStyletron();
@@ -51,8 +50,8 @@ const DashboardPage: React.FC = () => {
                     className={css({
                       width: '48px',
                       height: '48px',
-                      borderRadius: '50%',
-                      border: `2px solid ${colors.brand.coralRed}`,
+                      borderRadius: borderRadius.full,
+                      border: `2px solid ${colors.brand.burgundy}`,
                     })}
                   />
                 )}
@@ -83,11 +82,12 @@ const DashboardPage: React.FC = () => {
                 overrides={{
                   BaseButton: {
                     style: {
+                      borderRadius: borderRadius.full,
                       backgroundColor: colors.background.surface,
-                      color: colors.brand.coralRed,
-                      border: `1px solid ${colors.brand.coralRed}`,
+                      color: colors.brand.burgundy,
+                      border: `1px solid ${colors.brand.burgundy}`,
                       ':hover': {
-                        backgroundColor: '#fee',
+                        backgroundColor: colors.background.primary,
                       },
                     },
                   },
@@ -116,9 +116,8 @@ const DashboardPage: React.FC = () => {
                 fontFamily: 'Inter, sans-serif',
                 fontSize: fontSize.base,
                 color: colors.gray[500],
-                marginBottom: spacing.xl,
-              })}>
-              Your authentication module is now working. Next steps:
+                marginBottom: spacing.xl,             })}>
+                Your authentication module is now working. Next steps:
               </p>
               <ul className={css({
                 listStyle: 'none',
@@ -143,7 +142,7 @@ const DashboardPage: React.FC = () => {
                     color: colors.gray[900],
                     padding: spacing.md,
                     backgroundColor: colors.background.primary,
-                    borderRadius: '8px',
+                    borderRadius: borderRadius.base,
                   })}>
                     ✓ {feature}
                   </li>

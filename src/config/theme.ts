@@ -2,15 +2,31 @@ import { createTheme } from 'baseui';
 
 export const customTheme = createTheme({
   colors: {
-    // Primary colors
-    buttonPrimaryFill: '#e6434c',
+    // Primary colors - Using Burgundy
+    buttonPrimaryFill: '#3a061a',
     buttonPrimaryHover: '#9a375b',
-    buttonPrimaryActive: '#3a061a',
+    buttonPrimaryActive: '#e6434c',
     buttonPrimaryText: '#ffffff',
     buttonPrimarySelectedFill: '#9a375b',
     buttonPrimarySelectedText: '#ffffff',
     buttonPrimarySpinnerForeground: '#ffffff',
     buttonPrimarySpinnerBackground: '#9a375b',
+    
+    // Secondary button colors
+    buttonSecondaryFill: '#ffffff',
+    buttonSecondaryHover: '#f2e9e2',
+    buttonSecondaryActive: '#e8ddd3',
+    buttonSecondaryText: '#3a061a',
+    buttonSecondarySelectedFill: '#f2e9e2',
+    buttonSecondarySelectedText: '#3a061a',
+    
+    // Tertiary button colors
+    buttonTertiaryFill: 'transparent',
+    buttonTertiaryHover: '#f2e9e2',
+    buttonTertiaryActive: '#e8ddd3',
+    buttonTertiaryText: '#3a061a',
+    buttonTertiarySelectedFill: '#f2e9e2',
+    buttonTertiarySelectedText: '#3a061a',
     
     // Input colors
     inputBorder: '#d0bfb1',
@@ -32,10 +48,10 @@ export const customTheme = createTheme({
     
     // Border colors
     borderOpaque: '#d0bfb1',
-    borderSelected: '#e6434c',
+    borderSelected: '#3a061a',
     
     // Accent colors
-    accent: '#e6434c',
+    accent: '#3a061a',
     accent50: '#f6ddcd',
     accent100: '#f7a36b',
     accent200: '#9a375b',
@@ -205,4 +221,11 @@ export const customTheme = createTheme({
     },
   },
   primaryFontFamily: 'Inter, sans-serif',
+  // Override button border radius globally
+  borders: {
+    buttonBorderRadius: '9999px', // Full capsule shape
+    inputBorderRadius: '8px',
+    popoverBorderRadius: '8px',
+    surfaceBorderRadius: '8px',
+  },
 });

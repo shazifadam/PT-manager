@@ -5,6 +5,7 @@ import { Input } from 'baseui/input';
 import { useStyletron } from 'baseui';
 import { useAuth } from '../../contexts/AuthContext';
 import { userService } from '../../services/userService';
+import { colors, spacing, fontSize, borderRadius, shadows } from '../../config/designSystem';
 
 const SetupPage: React.FC = () => {
   const [css] = useStyletron();
@@ -31,14 +32,12 @@ const SetupPage: React.FC = () => {
       setLoading(true);
       setError('');
 
-      // Create user profile in Firestore
       await userService.createUserProfile(currentUser.uid, {
         displayName: displayName.trim(),
         email: currentUser.email || '',
         photoURL: currentUser.photoURL || '',
       });
 
-      // Navigate to dashboard
       navigate('/dashboard');
     } catch (err: any) {
       setError(err.message || 'Failed to complete setup');
@@ -53,8 +52,8 @@ const SetupPage: React.FC = () => {
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: '#f2e9e2',
-      padding: '20px',
+      backgroundColor: colors.background.primary,
+      padding: spacing.xl,
     })}>
       <div className={css({
         maxWidth: '400px',
@@ -63,7 +62,7 @@ const SetupPage: React.FC = () => {
         {/* Welcome Header */}
         <div className={css({
           textAlign: 'center',
-          marginBottom: '40px',
+          marginBottom: spacing['3xl'],
         })}>
           {currentUser?.photoURL && (
             <img
@@ -72,25 +71,25 @@ const SetupPage: React.FC = () => {
               className={css({
                 width: '80px',
                 height: '80px',
-                borderRadius: '50%',
-                margin: '0 auto 16px',
-                border: '3px solid #e6434c',
+                borderRadius: borderRadius.full,
+                margin: `0 auto ${spacing.base}`,
+                border: `3px solid ${colors.brand.burgundy}`,
               })}
             />
           )}
           <h1 className={css({
             fontFamily: 'Ubuntu, sans-serif',
-            fontSize: '32px',
+            fontSize: fontSize['4xl'],
             fontWeight: '400',
-            color: '#3a061a',
-            marginBottom: '8px',
+            color: colors.brand.burgundy,
+            marginBottom: spacing.sm,
           })}>
             Welcome to FitTrack Pro
           </h1>
           <p className={css({
             fontFamily: 'Inter, sans-serif',
-            fontSize: '16px',
-            color: '#847369',
+            fontSize: fontSize.base,
+            color: colors.gray[500],
           })}>
             Let's set up your account
           </p>
@@ -98,20 +97,20 @@ const SetupPage: React.FC = () => {
 
         {/* Setup Form Card */}
         <div className={css({
-          backgroundColor: '#ffffff',
-          borderRadius: '12px',
-          padding: '40px 32px',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+          backgroundColor: colors.background.surface,
+          borderRadius: borderRadius.md,
+          padding: spacing['2xl'],
+          boxShadow: shadows.md,
         })}>
           <form onSubmit={handleSubmit}>
-            <div className={css({ marginBottom: '24px' })}>
+            <div className={css({ marginBottom: spacing.xl })}>
               <label className={css({
                 display: 'block',
                 fontFamily: 'Inter, sans-serif',
-                fontSize: '14px',
+                fontSize: fontSize.sm,
                 fontWeight: '500',
-                color: '#171619',
-                marginBottom: '8px',
+                color: colors.gray[900],
+                marginBottom: spacing.sm,
               })}>
                 Your Name *
               </label>
@@ -124,13 +123,13 @@ const SetupPage: React.FC = () => {
                 overrides={{
                   Root: {
                     style: {
-                      borderRadius: '8px',
+                      borderRadius: borderRadius.base,
                     },
                   },
                   Input: {
                     style: {
-                      backgroundColor: '#f2e9e2',
-                      borderColor: error ? '#e6434c' : '#d0bfb1',
+                      backgroundColor: colors.background.primary,
+                      borderColor: error ? colors.semantic.error : colors.gray[300],
                       fontFamily: 'Inter, sans-serif',
                     },
                   },
@@ -141,11 +140,11 @@ const SetupPage: React.FC = () => {
             {error && (
               <div className={css({
                 backgroundColor: '#fee',
-                color: '#e6434c',
-                padding: '12px',
-                borderRadius: '8px',
-                marginBottom: '20px',
-                fontSize: '14px',
+                color: colors.semantic.error,
+                padding: spacing.md,
+                borderRadius: borderRadius.base,
+                marginBottom: spacing.lg,
+                fontSize: fontSize.sm,
               })}>
                 {error}
               </div>
@@ -160,15 +159,16 @@ const SetupPage: React.FC = () => {
                   style: {
                     width: '100%',
                     height: '48px',
-                    backgroundColor: '#e6434c',
+                    borderRadius: borderRadius.full,
+                    backgroundColor: colors.brand.burgundy,
                     ':hover': {
-                      backgroundColor: '#9a375b',
+                      backgroundColor: colors.brand.pink,
                     },
                     ':active': {
-                      backgroundColor: '#3a061a',
+                      backgroundColor: colors.brand.coralRed,
                     },
                     ':disabled': {
-                      backgroundColor: '#d0bfb1',
+                      backgroundColor: colors.gray[300],
                     },
                   },
                 },
