@@ -1,7 +1,7 @@
 import React from 'react';
 import { Block } from 'baseui/block';
 import { useStyletron } from 'baseui';
-import { fontFamily, fontSize, fontWeight } from '../tokens';
+import { fontFamily, typeScale, fontWeight } from '../tokens';
 
 interface FTCardProps {
   children: React.ReactNode;
@@ -35,7 +35,7 @@ export const FTCard: React.FC<FTCardProps> = ({
           <Block
             className={css({
               fontFamily: fontFamily.heading,
-              fontSize: fontSize.lg,
+              fontSize: typeScale['1'], // 19.2px
               fontWeight: fontWeight.normal,
               color: theme.colors.contentPrimary,
             })}

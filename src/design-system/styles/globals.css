@@ -1,12 +1,12 @@
 /**
  * FitTrack Pro Global Styles
  * Base UI Compatible - Following Uber design system standards
- * Light gray background, gradient in page header
- * Figtree for headings, Inter for body
+ * Light gray background
+ * Figtree for all text
  */
 
-/* Import Figtree and Inter fonts */
-@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+/* Import Figtree font */
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap');
 
 /* Reset & Base */
 *,
@@ -24,7 +24,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  font-family: 'Figtree', -apple-system, system-ui, sans-serif;
   font-weight: 400;
   background-color: #f5f5f5;
   color: #171619;
@@ -32,10 +32,10 @@ body {
   min-height: 100vh;
 }
 
-/* Headings - Figtree 400 */
+/* Headings - Figtree Medium */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Figtree', -apple-system, system-ui, sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.2;
 }
 
@@ -99,5 +99,5 @@ select {
 
 /* Base UI Component Overrides */
 [data-baseweb] {
-  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  font-family: 'Figtree', -apple-system, system-ui, sans-serif;
 }

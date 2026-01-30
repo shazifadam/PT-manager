@@ -1,7 +1,6 @@
 /**
  * FitTrack Pro Design Tokens
- * Single source of truth for all design values
- * Mobile app style with Figtree headings and Inter body
+ * Typography: Minor Third Scale (1.2 ratio) - Base 16px
  */
 
 // Brand Colors (use sparingly - Apple Health style)
@@ -21,15 +20,17 @@ export const gray = {
   900: '#171619',
   800: '#241f1f',
   700: '#3d3936',
+  600: '#666666',
   500: '#847369',
   400: '#9e918a',
   300: '#d0bfb1',
   200: '#e8ddd3',
   100: '#f2e9e2',
+  50: '#f8f8f8',
   white: '#ffffff',
 } as const;
 
-// Gradient Colors (for header)
+// Gradient Colors (for header - optional)
 export const gradient = {
   start: '#fad0c4',
   mid1: '#ffd1a9',
@@ -58,6 +59,7 @@ export const semantic = {
   // Text
   text: gray[900],
   textMuted: gray[500],
+  textLight: gray[600],
   
   // Borders - Subtle
   border: '#e0e0e0',
@@ -107,38 +109,59 @@ export const radius = {
   full: '9999px',
 } as const;
 
-// Typography Scale - Mobile app style
-export const fontSize = {
-  xs: '11px',       // Micro text
-  sm: '13px',       // Small labels
-  base: '15px',     // Body text
-  lg: '17px',       // Emphasized text
-  xl: '20px',       // Section headers
-  '2xl': '24px',    // Card titles
-  '3xl': '28px',    // Page titles
-  '4xl': '34px',    // Large display
-  '5xl': '40px',    // Hero text
+/**
+ * Typography Scale - Minor Third (1.2 ratio)
+ * Base: 16px
+ * Formula: size = base * (ratio ^ step)
+ * 
+ * Scale:
+ * -2: 11.11px (16 / 1.2^2)
+ * -1: 13.33px (16 / 1.2)
+ *  0: 16px    (base)
+ *  1: 19.2px  (16 * 1.2)
+ *  2: 23.04px (16 * 1.2^2)
+ *  3: 27.65px (16 * 1.2^3)
+ *  4: 33.18px (16 * 1.2^4)
+ *  5: 39.81px (16 * 1.2^5)
+ *  6: 47.78px (16 * 1.2^6)
+ */
+export const typeScale = {
+  '-2': '0.694rem',   // 11.11px - Micro text, timestamps
+  '-1': '0.833rem',   // 13.33px - Small labels, captions
+  '0': '1rem',        // 16px    - Base body text
+  '1': '1.2rem',      // 19.2px  - Emphasized body, large labels
+  '2': '1.44rem',     // 23.04px - H4, small headings
+  '3': '1.728rem',    // 27.65px - H3, section titles
+  '4': '2.074rem',    // 33.18px - H2, page titles
+  '5': '2.488rem',    // 39.81px - H1, hero text
+  '6': '2.986rem',    // 47.78px - Display, hero large
 } as const;
 
+export type TypeScaleKey = keyof typeof typeScale;
+
+// Deprecated: Use typeScale instead
+// Keeping for backward compatibility during migration
+export const fontSize = typeScale;
+
 export const fontWeight = {
-  normal: '400',    // Figtree/Inter Regular
-  medium: '500',
+  normal: '400',    // Figtree Regular - body, paragraphs, subheadings
+  medium: '500',    // Figtree Medium - headings, labels
   semibold: '600',
   bold: '700',
 } as const;
 
 export const lineHeight = {
-  tight: '1.2',     // Headlines
-  snug: '1.3',      // Subheadings
-  normal: '1.4',    // UI text
-  relaxed: '1.5',   // Body text
-  loose: '1.6',     // Long form
+  tight: '1.2',     // Headlines (scale 3+)
+  snug: '1.3',      // Subheadings (scale 1-2)
+  normal: '1.4',    // UI text (scale 0)
+  relaxed: '1.5',   // Body text (scale 0)
+  loose: '1.6',     // Long form (scale 0)
 } as const;
 
-// Font Families
+// Font Families - Figtree throughout
 export const fontFamily = {
-  heading: 'Figtree, -apple-system, system-ui, sans-serif',  // Headings - Figtree 400
-  body: 'Inter, -apple-system, system-ui, sans-serif',       // Body - Inter 400
+  heading: 'Figtree, -apple-system, system-ui, sans-serif',  // Figtree Medium for headings
+  body: 'Figtree, -apple-system, system-ui, sans-serif',     // Figtree Regular for body
   system: '-apple-system, system-ui, sans-serif',
 } as const;
 
@@ -184,3 +207,21 @@ export const zIndex = {
   popover: 1300,
   toast: 1400,
 } as const;
+
+/**
+ * Typography Usage Guide:
+ * 
+ * typeScale['-2'] - Micro text, timestamps, helper text (11.11px)
+ * typeScale['-1'] - Small labels, captions, metadata (13.33px)
+ * typeScale['0']  - Body text, paragraphs, standard UI (16px)
+ * typeScale['1']  - Emphasized text, large labels, card titles (19.2px)
+ * typeScale['2']  - Small headings, subsection titles (23.04px)
+ * typeScale['3']  - Section headings, modal titles (27.65px)
+ * typeScale['4']  - Page titles, main headings (33.18px)
+ * typeScale['5']  - Hero text, marketing headlines (39.81px)
+ * typeScale['6']  - Display text, splash screens (47.78px)
+ * 
+ * Font Weights:
+ * - fontWeight.normal (400) - All body text, paragraphs, descriptions
+ * - fontWeight.medium (500) - All headings, labels, emphasized text
+ */

@@ -94,4 +94,4 @@ export const fittrackTheme = createTheme({
   // Borders
   borderOpaque: '#e0e0e0',
   borderSelected: semantic.primary,
-});
+} as any);

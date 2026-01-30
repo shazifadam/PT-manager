@@ -1,7 +1,7 @@
 import React from 'react';
 import { Block } from 'baseui/block';
 import { useStyletron } from 'baseui';
-import { fontFamily, fontSize, fontWeight, lineHeight } from '../tokens';
+import { fontFamily, typeScale, fontWeight, lineHeight } from '../tokens';
 
 interface FTSectionProps {
   children: React.ReactNode;
@@ -29,7 +29,7 @@ export const FTSection: React.FC<FTSectionProps> = ({
         >
           <h2 className={css({
             fontFamily: fontFamily.heading,
-            fontSize: fontSize.xl,
+            fontSize: typeScale['2'], // 23.04px
             fontWeight: fontWeight.normal,
             lineHeight: lineHeight.snug,
             margin: 0,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Block } from 'baseui/block';
 import { useStyletron } from 'baseui';
-import { fontFamily, fontSize, fontWeight, lineHeight } from '../tokens';
+import { fontFamily, typeScale, fontWeight, lineHeight } from '../tokens';
 
 interface FTPageProps {
   children: React.ReactNode;
@@ -40,7 +40,7 @@ export const FTPage: React.FC<FTPageProps> = ({
               {title && (
                 <h1 className={css({
                   fontFamily: fontFamily.heading,
-                  fontSize: fontSize['3xl'],
+                  fontSize: typeScale['4'], // 33.18px
                   fontWeight: fontWeight.normal,
                   lineHeight: lineHeight.tight,
                   margin: 0,
@@ -54,7 +54,7 @@ export const FTPage: React.FC<FTPageProps> = ({
               {subtitle && (
                 <p className={css({
                   fontFamily: fontFamily.body,
-                  fontSize: fontSize.base,
+                  fontSize: typeScale['0'], // 16px
                   fontWeight: fontWeight.normal,
                   lineHeight: lineHeight.normal,
                   margin: 0,

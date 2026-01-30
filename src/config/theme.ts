@@ -228,4 +228,4 @@ export const customTheme = createTheme({
     popoverBorderRadius: '8px',
     surfaceBorderRadius: '8px',
   },
-});
+} as any);
